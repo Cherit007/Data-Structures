@@ -1,0 +1,22 @@
+def push(n):
+    if len(stack)==size:
+        print("Stack is full")
+    else:
+        stack.append(n)
+        
+        
+def pop():
+    if len(stack)==0:
+        print("Stack is empty")
+    else:
+        stack.pop(len(stack)-1)
+
+size=3
+stack=[]
+push(3)
+push(5)
+push(9)
+print(stack)
+push(7)
+pop()
+print(stack)
