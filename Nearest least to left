@@ -1,0 +1,37 @@
+# # #2 NLL | Nearest least to left | Next Least Element
+# # #using stack
+s=[int(i) for i in input().split()]
+stack=[]
+l=[]
+
+for i in range(len(s)):
+    if len(stack)==0:
+        l.append(-1)
+    elif len(stack)>0 and stack[-1]<s[i]:
+        l.append(stack[-1])
+    
+    elif len(stack)>0 and s[i]<stack[-1]:    
+        while(len(stack)>0 and s[i]<stack[-1]):
+            stack.pop()
+        l.append(-1)
+        
+   stack.append(s[i])
+
+print(l)
+    
+#using brute force
+
+# l=[]
+# for i in range(len(s)-1,-1,-1):
+#     for j in range(i-1,-1,-1):
+#         if s[i]>s[j]:
+#             l.append(s[j])
+#             break
+#         else:
+#             l.append(-1)
+#             break
+        
+# l.append(-1)
+            
+
+# print(l[::-1])
