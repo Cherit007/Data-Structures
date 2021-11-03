@@ -1,0 +1,36 @@
+#2 NGR | Nearest Greater to right | Next Largest Element
+#using stack
+
+s=[int(i) for i in input().split()]
+stack=[]
+l=[]
+for i in range(len(s)-1,-1,-1):
+    if len(s)==0:
+        l.append(-1)
+    elif len(stack)>0 and stack[-1]>s[i]:
+        l.append(stack[-1])
+        
+    elif len(stack)>0 and stack[-1]<s[i]:    
+        while(len(stack)>0 and s[i]>stack[-1]):
+            stack.pop()
+            
+        if len(stack)==0:
+            l.append(-1)
+        else:
+            l.append(stack[-1])
+    stack.append(s[i])
+l.append(-1)
+print(l[::-1])
+    
+#using brute force
+
+# l=[]
+# for i in range(len(s)):
+#     for j in range(i+1,len(s)):
+#         if s[i]<s[j]:
+#             l.append(s[j])
+#             break
+#         elif j==len(s)-1:
+#             l.append(-1)
+# l.append(-1)
+# print(l)
