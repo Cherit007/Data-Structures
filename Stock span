@@ -1,0 +1,42 @@
+# # # we need to find consecutive smaller elements to left side 
+# # # #using stack
+s=[int(i) for i in input().split()]
+stack=[]
+l=[]
+for i in range(len(s)):
+    if len(stack)==0:
+        l.append(-1)
+    elif len(stack)>0 and stack[-1]>s[i]:
+        l.append(stack[-1])
+        
+    elif len(stack)>0 and s[i]>stack[-1]:    
+        while(len(stack)>0 and s[i]>stack[-1]):
+            stack.pop()
+        if len(stack)==0:
+            l.append(-1)
+        else:
+            l.append(stack[-1])
+    stack.append(s[i])
+print(l)
+for i in range(len(l)):
+    if l[i]==-1:
+        l[i]=i+1
+    else:
+        l[i]=i-s.index(l[i])
+print(l)
+    
+#using brute force
+
+# l=[]
+
+# for i in range(len(s)):
+#     p=0
+#     for j in range(i,-1,-1):
+#         if s[i]>=s[j]:
+#             p+=1
+#         else:
+#             break
+#     l.append(p)
+        
+        
+# print(l)
