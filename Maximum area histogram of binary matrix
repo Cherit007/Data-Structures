@@ -1,0 +1,94 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<int> nsr(vector<int>h,int n)
+{
+    vector <int> v;
+    stack < pair<int,int> > st;
+    for(int i=n-1;i>=0;i--)
+    {
+        if(st.empty())
+            v.push_back(n);
+        else if(!st.empty()&&st.top().first<h[i])
+        {
+            v.push_back(st.top().second);
+        }
+        else
+        {
+            while(!st.empty()&&st.top().first>=h[i])
+            {
+                st.pop();
+            }
+            if(st.empty())
+                v.push_back(n);
+            else
+                v.push_back(st.top().second);
+        }
+        st.push({h[i],i});
+    }
+    reverse(v.begin(),v.end());
+    return v;
+}
+
+vector<int> nsl(vector<int> h,int n)
+{
+    vector <int> v;
+    stack < pair<int,int> > st;
+    for(int i=0;i<n;i++)
+    {
+        if(st.empty())
+            v.push_back(-1);
+        else if(!st.empty()&&st.top().first<h[i])
+        {
+            v.push_back(st.top().second);
+        }
+        else
+        {
+            while(!st.empty()&&st.top().first>=h[i])
+            {
+                st.pop();
+            }
+            if(st.empty())
+                v.push_back(-1);
+            else
+                v.push_back(st.top().second);
+        }
+        st.push({h[i],i});
+    }
+    return v;
+}
+int main()
+{
+    int n;
+    vector<int>r;
+    cin>>n;int a[n][n];
+    for(int i=0;i<n;i++)
+    for (int j=0;j<n;j++)
+    cin>>a[i][j];
+    vector<int> v1,v2,v3;
+    vector <int>h(n);
+    fill(h.begin(),h.end(),0);
+ 
+    for(int i=0;i<n;i++)
+    {
+    for (int j=0;j<n;j++)
+    {
+    if (a[i][j]!=0)
+     h[j]+=a[i][j];
+     else
+     h[j]=0;
+     
+    }
+    v1=nsr(h,n);
+    v2=nsl(h,n);
+    for(int i=0;i<n;i++)
+    v3.push_back(h[i]*abs(v1[i]-v2[i]-1));
+    
+    r.push_back(*max_element(v3.begin(),v3.end()));
+    }
+    cout<<*max_element(r.begin(),r.end());
+    
+   
+    
+
+}
