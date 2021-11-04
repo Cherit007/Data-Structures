@@ -1,0 +1,41 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int n,s=0,i;
+int hello(int a[],int n)
+{
+  int ml[n],mr[n],w[n];
+   
+    
+    for (i=0;i<n;i++)
+    {
+        if (i==0)
+        ml[i]=a[i];
+        else
+        {
+            ml[i]=max(a[i],ml[i-1]);
+        }
+    }
+    mr[n-1]=a[n-1];
+    for (i=n-2;i>=0;i--)
+        mr[i]=max(a[i],ml[i+1]);
+        
+    for(i=0;i<n;i++)
+    {
+        w[i]=min(mr[i],ml[i])-a[i];
+    }
+    
+    for(i=0;i<n;i++)
+    s+=w[i];
+    
+    return s;
+}
+int main()
+{
+    cin>>n;
+    int a[n];
+    for(i=0;i<n;i++)
+    cin>>a[i];
+    cout<<hello(a,n);
+    return 0;
+}
