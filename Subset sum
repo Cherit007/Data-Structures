@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include<iostream>
 using namespace std;
-bool knapsack(int val[],int s,int n)
+bool subset(int val[],int s,int n)
 {
     int i,j;
     bool t[n+1][s+1];
