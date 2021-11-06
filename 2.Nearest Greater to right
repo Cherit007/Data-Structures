@@ -5,7 +5,7 @@ s=[int(i) for i in input().split()]
 stack=[]
 l=[]
 for i in range(len(s)-1,-1,-1):
-    if len(s)==0:
+    if len(stack)==0:
         l.append(-1)
     elif len(stack)>0 and stack[-1]>s[i]:
         l.append(stack[-1])
