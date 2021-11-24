@@ -1,4 +1,4 @@
-# # # we need to find consecutive smaller elements to left side 
+# # # we need to find consecutive smaller elements to left side so we need to put next left greater algo
 # # # #using stack
 s=[int(i) for i in input().split()]
 stack=[]
